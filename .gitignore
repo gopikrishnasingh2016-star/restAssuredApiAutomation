@@ -1,0 +1,29 @@
+# Build output
+target/
+build/
+out/
+
+# Reports and logs
+allure-results/
+allure-report/
+logs/
+*.log
+test-output/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local secrets / overrides
+src/test/resources/config/config-local.properties
+.env

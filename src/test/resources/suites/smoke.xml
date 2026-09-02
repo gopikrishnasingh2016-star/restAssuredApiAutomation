@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!-- Deployment gate: the handful of checks that must pass before anything else runs. -->
+<suite name="API Automation - Smoke" parallel="classes" thread-count="4" verbose="1">
+
+    <listeners>
+        <listener class-name="com.apiautomation.listeners.TestListener"/>
+        <listener class-name="com.apiautomation.listeners.RetryTransformer"/>
+    </listeners>
+
+    <test name="Smoke">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.apiautomation.tests.*"/>
+        </packages>
+    </test>
+</suite>

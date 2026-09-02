@@ -1,0 +1,13 @@
+{
+  "priority": 6,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/users/(2[0-9]|[3-9][0-9]+)",
+    "headers": { "x-api-key": { "equalTo": "reqres-free-v1" } }
+  },
+  "response": {
+    "status": 404,
+    "headers": { "Content-Type": "application/json; charset=utf-8" },
+    "jsonBody": {}
+  }
+}

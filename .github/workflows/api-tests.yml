@@ -1,0 +1,73 @@
+name: API Tests
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Target environment (config/config-<env>.properties)"
+        type: choice
+        options: [mock, sit, uat, live]
+        default: mock
+      tags:
+        description: "Cucumber tag expression"
+        type: string
+        default: "not @wip"
+  schedule:
+    # Nightly regression against the deployed environment.
+    - cron: "0 3 * * *"
+
+jobs:
+  test:
+    name: ${{ matrix.suite }} suite
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [testng, cucumber]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: temurin
+          cache: maven
+
+      - name: Resolve target environment
+        id: params
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "env=sit" >> "$GITHUB_OUTPUT"
+          else
+            echo "env=${{ inputs.environment || 'mock' }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run ${{ matrix.suite }} suite
+        run: >
+          mvn -B -ntp test
+          -Denv=${{ steps.params.outputs.env }}
+          -Dsuite=${{ matrix.suite }}
+          -Dtags="${{ inputs.tags || 'not @wip' }}"
+
+      - name: Upload Allure results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-${{ matrix.suite }}
+          path: target/allure-results
+          if-no-files-found: warn
+
+      - name: Upload reports and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports-${{ matrix.suite }}
+          path: |
+            target/surefire-reports
+            target/cucumber-reports
+            target/logs
+          if-no-files-found: warn

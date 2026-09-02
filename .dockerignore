@@ -1,0 +1,10 @@
+target/
+allure-report/
+allure-results/
+test-output/
+.git/
+.github/
+.idea/
+*.iml
+*.log
+README.md

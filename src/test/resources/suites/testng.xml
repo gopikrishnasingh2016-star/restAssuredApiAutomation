@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!-- Full regression: every test, classes executed in parallel. -->
+<suite name="API Automation - Full Regression" parallel="classes" thread-count="4" verbose="1">
+
+    <listeners>
+        <listener class-name="com.apiautomation.listeners.TestListener"/>
+        <listener class-name="com.apiautomation.listeners.RetryTransformer"/>
+    </listeners>
+
+    <test name="Users">
+        <classes>
+            <class name="com.apiautomation.tests.users.GetUsersTests"/>
+            <class name="com.apiautomation.tests.users.CreateUserTests"/>
+            <class name="com.apiautomation.tests.users.UpdateUserTests"/>
+            <class name="com.apiautomation.tests.users.DeleteUserTests"/>
+        </classes>
+    </test>
+
+    <test name="Authentication">
+        <classes>
+            <class name="com.apiautomation.tests.auth.TokenManagerTests"/>
+            <class name="com.apiautomation.tests.auth.LoginTests"/>
+            <class name="com.apiautomation.tests.auth.RegisterTests"/>
+        </classes>
+    </test>
+
+    <test name="Resources">
+        <classes>
+            <class name="com.apiautomation.tests.resources.ResourceTests"/>
+        </classes>
+    </test>
+
+    <test name="Specification style">
+        <classes>
+            <class name="com.apiautomation.tests.spec.SpecDrivenUserTests"/>
+        </classes>
+    </test>
+</suite>
