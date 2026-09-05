@@ -1,0 +1,9 @@
+{
+  "priority": 5,
+  "request": {
+    "method": "DELETE",
+    "urlPathPattern": "/api/users/[0-9]+",
+    "headers": { "x-api-key": { "equalTo": "reqres-free-v1" } }
+  },
+  "response": { "status": 204 }
+}

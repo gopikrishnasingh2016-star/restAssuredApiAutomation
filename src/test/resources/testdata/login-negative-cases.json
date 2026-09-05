@@ -1,0 +1,26 @@
+[
+  {
+    "caseId": "TC-AUTH-N1",
+    "description": "password omitted",
+    "email": "eve.holt@reqres.in",
+    "password": null,
+    "expectedStatus": 400,
+    "expectedError": "Missing password"
+  },
+  {
+    "caseId": "TC-AUTH-N2",
+    "description": "email omitted",
+    "email": null,
+    "password": "cityslicka",
+    "expectedStatus": 400,
+    "expectedError": "Missing email or username"
+  },
+  {
+    "caseId": "TC-AUTH-N3",
+    "description": "empty payload",
+    "email": null,
+    "password": null,
+    "expectedStatus": 400,
+    "expectedError": "Missing email or username"
+  }
+]

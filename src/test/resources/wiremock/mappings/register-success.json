@@ -1,0 +1,17 @@
+{
+  "priority": 3,
+  "request": {
+    "method": "POST",
+    "urlPath": "/api/register",
+    "headers": { "x-api-key": { "equalTo": "reqres-free-v1" } },
+    "bodyPatterns": [
+      { "matchesJsonPath": "$.email" },
+      { "matchesJsonPath": "$.password" }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json; charset=utf-8" },
+    "jsonBody": { "id": 4, "token": "QpwL5tke4Pnpja7X" }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "priority": 4,
+  "request": {
+    "method": "POST",
+    "urlPath": "/api/login",
+    "headers": {
+      "x-api-key": {
+        "equalTo": "reqres-free-v1"
+      }
+    },
+    "bodyPatterns": [
+      {
+        "doesNotMatch": ".*\"email\".*"
+      }
+    ]
+  },
+  "response": {
+    "status": 400,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "jsonBody": {
+      "error": "Missing email or username"
+    }
+  }
+}

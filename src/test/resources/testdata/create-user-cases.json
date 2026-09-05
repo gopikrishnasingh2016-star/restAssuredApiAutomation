@@ -1,0 +1,6 @@
+[
+  { "caseId": "TC-USR-01", "description": "plain ascii name and job", "name": "morpheus", "job": "leader" },
+  { "caseId": "TC-USR-02", "description": "name containing spaces", "name": "Ada Lovelace", "job": "Analytical Engine Programmer" },
+  { "caseId": "TC-USR-03", "description": "unicode name", "name": "Gopi Krishna Singh", "job": "SDET" },
+  { "caseId": "TC-USR-04", "description": "long job title", "name": "neo", "job": "Principal Quality Engineering Architect for Distributed Systems" }
+]

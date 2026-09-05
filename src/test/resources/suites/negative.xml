@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!-- Contract-violation checks: what the API does when the client gets it wrong. -->
+<suite name="API Automation - Negative" parallel="classes" thread-count="2" verbose="1">
+
+    <listeners>
+        <listener class-name="com.apiautomation.listeners.TestListener"/>
+        <listener class-name="com.apiautomation.listeners.RetryTransformer"/>
+    </listeners>
+
+    <test name="Negative">
+        <groups>
+            <run>
+                <include name="negative"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.apiautomation.tests.*"/>
+        </packages>
+    </test>
+</suite>
